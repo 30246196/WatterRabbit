@@ -1,6 +1,5 @@
-﻿
-@{
-    // Disable the shared layout so this page renders standalone.
+﻿@{
+    // Disables the shared layout so this page is rendered on its own.
     Layout = null;
 }
 
@@ -8,59 +7,71 @@
 
 <html>
 <head>
-    <!--added-->
+    <!-- Basic metadata for character encoding -->
     <meta charset="utf-8" />
 
+    <!-- Ensures the page scales correctly on mobile devices -->
     <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+
+    <!-- Title displayed in the browser tab -->
     <title>SplashScreen</title>
 
+    <!-- Google Font used throughout the splash screen -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
+    <!-- Loads the CSS bundle (Bootstrap and site styles) -->
     @Styles.Render("~/Content/css")
+
+    <!-- Loads Modernizr for browser feature detection -->
     @Scripts.Render("~/bundles/modernizr")
 
+    <!-- Inline styles specific to the splash screen -->
     <style>
+        /* Base styling for the page */
         body {
             font: 20px Montserrat, sans-serif;
             line-height: 1.8;
-            color: #2f2f2f; /* Black Gray */
+            color: #2f2f2f; /* Dark grey */
             padding-top: 0px;
             padding-bottom: 0px;
         }
 
+        /* Black background section with white text */
         .bg-1 {
             background-color: #000000; /* Black */
             color: #fff;
         }
 
+        /* Vertical spacing for the container */
         .container-fluid {
             padding-top: 70px;
             padding-bottom: 70px;
         }
 
+        /* Utility class for spacing */
         .margin {
             margin-bottom: 45px;
         }
-        /* unvisited link */
+
+        /* Link styling in all states */
         a:link {
             color: white;
             text-decoration: none;
             font-size: 200%;
         }
-        /* visited link */
+
         a:visited {
             color: white;
             text-decoration: none;
             font-size: 200%;
-            
         }
-        /* mouse over link */
+
         a:hover {
-            color: lightblue;
+            color: lightblue; /* Changes colour when hovered */
             text-decoration: none;
             font-size: 200%;
         }
-        /* selected link */
+
         a:active {
             color: white;
             text-decoration: none;
@@ -68,16 +79,19 @@
         }
     </style>
 </head>
-<body>
-    <div class="container-fluid bg-1 text-center">
-        @Html.ActionLink("Are you thirsty?", "Index", "Home", new { @class = "margin"})
 
-        <video autoplay loop muted class="img-fluid" src="~/Images/WaterRabbitVideo.mp4" />  
+<body>
+    <!-- Main splash screen container with centred content -->
+    <div class="container-fluid bg-1 text-center">
+
+        <!-- MVC link that navigates to Home/Index -->
+        @Html.ActionLink("Are you thirsty?", "Index", "Home", new { @class = "margin" })
+
+        <!-- Autoplaying, looping, muted video used as the splash animation -->
+        <video autoplay loop muted class="img-fluid" src="~/Images/WaterRabbitVideo.mp4"></video>
     </div>
 
+    <!-- Loads jQuery from the configured bundle -->
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
 </body>
-
-
 </html>
